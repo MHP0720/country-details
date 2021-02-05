@@ -1,0 +1,38 @@
+body{
+    margin-left: 200px;
+    background-color: rgb(110, 104, 104);
+}
+
+
+
+#countries{
+   
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.country{
+    border: 1px solid rgb(138, 5, 27);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    background-color: white;
+}
+.country-name{
+    font-size: 45px;
+    color: rgb(255, 0, 0);
+}
+#country-Detail{
+    
+    color: rgba(13, 230, 85, 0.952);
+    padding-left: 32%;
+    padding-bottom: 25px; 
+}
+
+#country-Detail img{
+    width: 450px;
+    
+     
+}

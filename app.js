@@ -1,0 +1,103 @@
+fetch('https://restcountries.eu/rest/v2/all')
+.then(Response => Response.json())
+.then(data => displayCountries(data))
+
+
+
+const displayCountries = countries =>{
+
+    const countriesDiv = document.getElementById('countries');
+    countries.forEach(country => {
+        // const country = countries[i];
+
+            const countryDiv = document.createElement('div');
+
+            countryDiv.className = 'country';
+            const countryInfo = `
+                <h3 class="country-name">${country.name}</h3>
+                <p style="color: purple;">${country.capital}</p>
+                <button style="background-color: black; color: red;" onclick= "displayCountryDetail('${country.name}')">Details</button>
+            `
+
+            countryDiv.innerHTML = countryInfo;
+
+        countriesDiv.appendChild(countryDiv)
+
+    });
+  
+
+    // for (let i = 0; i < countries.length; i++) {
+    //     const country = countries[i];
+
+    //     const countryDiv = document.createElement('div');
+////////
+        // const h3 = document.createElement('h3');
+        // h3.innerText = country.name;
+
+        // const p = document.createElement('p');
+        // p.innerText = country.capital;
+        // countryDiv.appendChild(h3);
+        // countryDiv.appendChild(p);
+////////
+       
+    //     countryDiv.className = 'country';
+    //     const countryInfo = `
+    //         <h3 class="country-name">${country.name}</h3>
+    //         <p>${country.capital}</p>
+    //     `
+
+    //     countryDiv.innerHTML = countryInfo;
+
+    //   countriesDiv.appendChild(countryDiv);
+    // }
+}
+
+
+ const displayCountryDetail = name=>{
+    const url = `https://restcountries.eu/rest/v2/name/${name}`
+     fetch(url)
+     .then(Response => Response.json())
+     .then(data => renderCountryInfo(data[0]));
+
+
+
+   
+    
+
+
+    
+ }
+
+    const renderCountryInfo = country => {
+        const countryDetail = document.getElementById('country-Detail');     countryDetail.innerHTML = `
+           <h1>${country.name}</h1>
+           <p>Population: ${country.population}</p>
+           <p>alpha3Code: ${country.alpha3Code}</p>
+            
+           <p>callingCodes: ${country.callingCodes}</p>
+          
+   
+           <p>nativeName: ${country.nativeName}</p>
+          
+           <p>borders: ${country.borders}</p>
+            <p>Area: ${country.area}</p>
+          <img src ="${country.flag}">
+    `
+
+
+
+//     const displayCountryDetail = languages=>{
+//         const url = `https://restcountries.eu/rest/v2/lang/${et}`
+//          fetch(url)
+//          .then(Response => Response.json())
+//          .then(data => renderCountryLanguageInfo(data[0]));
+    
+
+
+//     const renderCountryLanguageInfo = country => {
+//         const countryDetail = document.getElementById('country-Detail');     countryDetail.innerHTML = `
+//         <p>languages: ${country.languages}</p>
+//         `
+// }
+//     }
+}
